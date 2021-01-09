@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         mainCamera.SetActive(true);
-        rotationCamera.SetActive(true);
+        rotationCamera.SetActive(false);
     }
 
     // Update is called once per frame
