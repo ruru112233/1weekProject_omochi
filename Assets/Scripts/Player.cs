@@ -47,6 +47,16 @@ public class Player : MonoBehaviour
                 Quaternion.Euler(startPos.transform.rotation.x, startPos.transform.rotation.y, startPos.transform.rotation.z);
         }
 
+        if (climbFlag && moveFlag)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                moveFlag = false;
+                rb.useGravity = false;
+                climbFlag1 = true;
+            }
+        }
+
         if (climbFlag1)
         {
             climbTime += Time.deltaTime;
@@ -86,15 +96,7 @@ public class Player : MonoBehaviour
             float x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * angleSpeed;
             transform.Rotate(Vector3.up * x);
 
-            if (climbFlag)
-            {
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    moveFlag = false;
-                    rb.useGravity = false;
-                    climbFlag1 = true;
-                }
-            }
+            
         }
         
 
