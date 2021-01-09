@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -10,12 +11,18 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            MainCameraOn();
+        }
     }
 
     private void FixedUpdate()
@@ -23,14 +30,30 @@ public class CameraController : MonoBehaviour
         // 時計回り
         if (Input.GetKey(KeyCode.Q))
         {
+            MainCameraOFF();
+
             transform.RotateAround(target.transform.position, new Vector3(0, 1, 0), 20.0f * Time.deltaTime);
+
         }
 
         // 反時計回り
         if (Input.GetKey(KeyCode.E))
         {
+            MainCameraOFF();
             transform.RotateAround(target.transform.position, new Vector3(0, -1, 0), 20.0f * Time.deltaTime);
         }
 
+    }
+
+    void MainCameraOn()
+    {
+        GameManager.instance.mainCamera.SetActive(true);
+        GameManager.instance.rotationCamera.SetActive(false);
+    }
+
+    void MainCameraOFF()
+    {
+        GameManager.instance.mainCamera.SetActive(false);
+        GameManager.instance.rotationCamera.SetActive(true);
     }
 }
