@@ -17,26 +17,44 @@ public class Player : MonoBehaviour
     //方向転換のスピード
     float angleSpeed = 200;
 
+    // ステージスタート位置
+    GameObject startPos;
+
+    // 死んだときに生成するオブジェクト
+    public GameObject deadObj;
+
     Animator anime;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        startPos = GameObject.Find("StartPos");
     }
 
     // Update is called once per frame
     void Update()
     {
+        // 死んだ時のテスト用
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Instantiate(deadObj, 
+                        new Vector3(transform.position.x, transform.position.y, transform.position.z), 
+                        Quaternion.identity);
+            transform.position = 
+                new Vector3(startPos.transform.position.x,startPos.transform.position.y,startPos.transform.position.z);
+            transform.rotation =
+                Quaternion.Euler(startPos.transform.rotation.x, startPos.transform.rotation.y, startPos.transform.rotation.z);
+        }
+
         if (climbFlag1)
         {
             climbTime += Time.deltaTime;
 
             if (climbTime <= 1.0f)
             {
-                transform.position += transform.forward * 1.0f * Time.deltaTime;
+                transform.position += transform.forward * 2.0f * Time.deltaTime;
                 transform.position += new Vector3(0, 1.0f * Time.deltaTime, 0);
-
             }
             else
             {
