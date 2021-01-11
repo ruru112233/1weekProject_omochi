@@ -108,6 +108,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Block")
         {
             climbFlag = true;
+            GameManager.instance.noboruFlag = true;
         }
     }
 
@@ -116,6 +117,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Block")
         {
             climbFlag = false;
+            GameManager.instance.noboruFlag = false;
         }
     }
 
