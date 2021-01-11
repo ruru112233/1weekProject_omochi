@@ -6,6 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public GameObject mainCamera, rotationCamera;
 
+    public GameObject noboruText;
+
+    public bool noboruFlag = false;
+
     public static GameManager instance;
 
     private void Awake()
@@ -21,11 +25,19 @@ public class GameManager : MonoBehaviour
     {
         mainCamera.SetActive(true);
         rotationCamera.SetActive(false);
+        noboruText.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (noboruFlag)
+        {
+            noboruText.SetActive(true);
+        }
+        else
+        {
+            noboruText.SetActive(false);
+        }
     }
 }
