@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject noboruText;
 
+    public GameObject ganerateManager;
+
     public bool noboruFlag = false;
 
     public static GameManager instance;

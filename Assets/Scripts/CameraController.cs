@@ -32,7 +32,7 @@ public class CameraController : MonoBehaviour
         {
             MainCameraOFF();
 
-            transform.RotateAround(target.transform.position, new Vector3(0, 1, 0), 20.0f * Time.deltaTime);
+            transform.RotateAround(target.transform.position, new Vector3(0, 1, 0), 60.0f * Time.deltaTime);
 
         }
 
@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             MainCameraOFF();
-            transform.RotateAround(target.transform.position, new Vector3(0, -1, 0), 20.0f * Time.deltaTime);
+            transform.RotateAround(target.transform.position, new Vector3(0, -1, 0), 60.0f * Time.deltaTime);
         }
 
     }

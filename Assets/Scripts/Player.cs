@@ -110,6 +110,12 @@ public class Player : MonoBehaviour
             climbFlag = true;
             GameManager.instance.noboruFlag = true;
         }
+
+        if (other.gameObject.tag == "Goal")
+        {
+
+            Debug.Log("Clear");
+        }
     }
 
     private void OnTriggerExit(Collider other)
