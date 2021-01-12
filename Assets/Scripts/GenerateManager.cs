@@ -8,6 +8,7 @@ public class GenerateManager : MonoBehaviour
     // ブロックのプレハブ
     public GameObject brockPrefab, goalPrefab;
 
+    // チュートリアルで使うブロック
     byte[][] blocks =
         {
             new byte [] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -79,7 +80,6 @@ public class GenerateManager : MonoBehaviour
 
     void BlockGenerate()
     {
-
         if (pos1 < blocks.Length)
         {
             for (int i = pos1; i < pos1 + 1; i++)
@@ -95,10 +95,7 @@ public class GenerateManager : MonoBehaviour
 
             }
             pos1++;
-            
-        }
-        
-        
+        }   
     }
 
     void BlockGenerate2()
@@ -167,7 +164,6 @@ public class GenerateManager : MonoBehaviour
     void BlockGenerate5()
     {
         StartCoroutine(BlockCol1());
-
     }
 
     IEnumerator BlockCol1()
@@ -246,6 +242,7 @@ public class GenerateManager : MonoBehaviour
 
         for (int i = 0; i < 2; i++)
         {
+            yield return new WaitForSeconds(waitTime);
             Block1Tmp(0, startPos, endPos);
         }
 
@@ -256,6 +253,7 @@ public class GenerateManager : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
+            yield return new WaitForSeconds(waitTime);
             Block1Tmp(0, startPos, endPos);
         }
 
@@ -266,6 +264,7 @@ public class GenerateManager : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
+            yield return new WaitForSeconds(waitTime);
             Block1Tmp(0, startPos, endPos);
         }
 
@@ -276,6 +275,7 @@ public class GenerateManager : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
+            yield return new WaitForSeconds(waitTime);
             Block1Tmp(0, startPos, endPos);
         }
 
@@ -286,6 +286,7 @@ public class GenerateManager : MonoBehaviour
 
         for (int i = 0; i < 2; i++)
         {
+            yield return new WaitForSeconds(waitTime);
             Block1Tmp(0, startPos, endPos);
         }
 
@@ -293,6 +294,7 @@ public class GenerateManager : MonoBehaviour
                 
         for (int i = 0; i < 2; i++)
         {
+            yield return new WaitForSeconds(waitTime);
             Block1Tmp(1, startPos, endPos);
         }
 
@@ -313,11 +315,13 @@ public class GenerateManager : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
+            yield return new WaitForSeconds(waitTime);
             Block1Tmp(1, startPos, endPos);
         }
 
         for (int i = 0; i < 4; i++)
         {
+            yield return new WaitForSeconds(waitTime);
             Block1Tmp(2, startPos, endPos);
         }
 
@@ -334,8 +338,6 @@ public class GenerateManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
         GoalTmp(2, golsStartPos, goalEndPos);
-
-
 
     }
 

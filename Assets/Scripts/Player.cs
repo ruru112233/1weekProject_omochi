@@ -116,6 +116,13 @@ public class Player : MonoBehaviour
 
             Debug.Log("Clear");
         }
+
+        if (other.gameObject.tag == "Check1")
+        {
+            GameManager.instance.stage1.check1Flag = true;
+            GameObject check = GameObject.FindGameObjectWithTag("Butterfly");
+            Destroy(check);
+        }
     }
 
     private void OnTriggerExit(Collider other)

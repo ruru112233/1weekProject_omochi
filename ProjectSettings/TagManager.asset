@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Block
   - Goal
+  - Check
+  - Butterfly
+  - Check1
   layers:
   - Default
   - TransparentFX

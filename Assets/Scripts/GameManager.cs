@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject ganerateManager;
 
+    public Stage1 stage1;
+
     public bool noboruFlag = false;
 
     public static GameManager instance;
