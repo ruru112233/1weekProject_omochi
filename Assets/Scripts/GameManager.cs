@@ -35,9 +35,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        rotationCamera = GameObject.FindGameObjectWithTag("RotationCamera");
+        noboruText = GameObject.FindGameObjectWithTag("Noboru");
+
         mainCamera.SetActive(true);
         rotationCamera.SetActive(false);
-        menu.SetActive(true);
+
+        if (menu != null)
+        {
+            menu.SetActive(true);
+        }
         noboruText.SetActive(false);
         check1Flag = false;
         check2Flag = false;
