@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject ganerateManager;
 
+    public GameObject menu;
+
     public Stage1 stage1;
 
     public bool noboruFlag = false;
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
     {
         mainCamera.SetActive(true);
         rotationCamera.SetActive(false);
+        menu.SetActive(true);
         noboruText.SetActive(false);
         check1Flag = false;
         check2Flag = false;
