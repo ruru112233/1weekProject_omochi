@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
             if (climbTime <= 1.0f)
             {
                 transform.position += transform.forward * 2.0f * Time.deltaTime;
-                transform.position += new Vector3(0, 1.0f * Time.deltaTime, 0);
+                transform.position += new Vector3(0, 1.1f * Time.deltaTime, 0);
             }
             else
             {
@@ -73,6 +73,12 @@ public class Player : MonoBehaviour
                 climbFlag1 = false;
                 climbTime = 0;
             }
+        }
+
+        // ゲームオーバー
+        if (transform.position.y <= 0.6f)
+        {
+
         }
     }
 
@@ -117,12 +123,14 @@ public class Player : MonoBehaviour
             Debug.Log("Clear");
         }
 
+        /*
         if (other.gameObject.tag == "Check1")
         {
             GameManager.instance.stage1.check1Flag = true;
             GameObject check = GameObject.FindGameObjectWithTag("Butterfly");
             Destroy(check);
         }
+        */
     }
 
     private void OnTriggerExit(Collider other)

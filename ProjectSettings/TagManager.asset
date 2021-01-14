@@ -9,6 +9,7 @@ TagManager:
   - Check
   - Butterfly
   - Check1
+  - AudioManager
   layers:
   - Default
   - TransparentFX
