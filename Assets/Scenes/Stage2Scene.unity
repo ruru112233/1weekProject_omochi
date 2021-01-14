@@ -308,7 +308,10 @@ MonoBehaviour:
   goalPrefab: {fileID: 5730958172316565579, guid: 9961bc8ba7316fb44ac4ab57442da77e, type: 3}
   checkPrefab: {fileID: 1645815665245490839, guid: f3b0a7573f711304184223f5723f63a0, type: 3}
   tagNashi: {fileID: 450380219365768283, guid: 0e7610a589cc2484a93ae73460dfd18e, type: 3}
-  check1Flag: 0
+  longPrefab: {fileID: 1909764507743616744, guid: 6b7a28620e3ce5849896b28ea909dc39, type: 3}
+  check2Prefab: {fileID: 5076985289518657071, guid: c8af0cddc869fc44995599e17fbf46d8, type: 3}
+  check3Prefab: {fileID: 7549582186075982983, guid: a7972abb08530764d9af36376273e0a9, type: 3}
+  check4Prefab: {fileID: 0}
 --- !u!4 &446671519 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 450380219365768288, guid: c5490f8d9a6587f4ebc10991d9e2c8e6, type: 3}
@@ -1361,3 +1364,8 @@ MonoBehaviour:
   ganerateManager: {fileID: 389095284}
   stage1: {fileID: 0}
   noboruFlag: 0
+  check1Flag: 0
+  check2Flag: 0
+  check3Flag: 0
+  check4Flag: 0
+  check5Flag: 0

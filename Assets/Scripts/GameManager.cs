@@ -14,6 +14,12 @@ public class GameManager : MonoBehaviour
 
     public bool noboruFlag = false;
 
+    public bool check1Flag = false;
+    public bool check2Flag = false;
+    public bool check3Flag = false;
+    public bool check4Flag = false;
+    public bool check5Flag = false;
+
     public static GameManager instance;
 
     private void Awake()
@@ -30,7 +36,12 @@ public class GameManager : MonoBehaviour
         mainCamera.SetActive(true);
         rotationCamera.SetActive(false);
         noboruText.SetActive(false);
-    }
+        check1Flag = false;
+        check2Flag = false;
+        check3Flag = false;
+        check4Flag = false;
+        check5Flag = false;
+}
 
     // Update is called once per frame
     void Update()

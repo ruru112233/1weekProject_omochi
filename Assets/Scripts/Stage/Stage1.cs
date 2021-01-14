@@ -8,8 +8,6 @@ public class Stage1 : MonoBehaviour
     // ブロックのプレハブ
     public GameObject brockPrefab, goalPrefab, checkPrefab, tagNashi;
 
-    public bool check1Flag = false;
-
     // 右上のブロックマップ
     byte[][] blocks =
         {
@@ -218,9 +216,7 @@ public class Stage1 : MonoBehaviour
                     {
                         Instantiate(checkPrefab, new Vector3(j + 1, 10, i), Quaternion.identity);
                     }
-
                 }
-
             }
             pos3++;
         }
@@ -229,7 +225,7 @@ public class Stage1 : MonoBehaviour
     // 右上C
     IEnumerator BlockGenerateC()
     {
-        yield return new WaitUntil(() => check1Flag);
+        yield return new WaitUntil(() => GameManager.instance.check1Flag);
 
         for (int i = 0; i < blocksC.Length; i++)
         {

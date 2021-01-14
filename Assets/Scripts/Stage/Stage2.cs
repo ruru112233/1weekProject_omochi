@@ -5,9 +5,9 @@ using UnityEngine;
 public class Stage2 : MonoBehaviour
 {
     // ブロックのプレハブ
-    public GameObject brockPrefab, goalPrefab, checkPrefab, tagNashi;
+    public GameObject brockPrefab, goalPrefab, checkPrefab, tagNashi,longPrefab;
 
-    public bool check1Flag = false;
+    public GameObject check2Prefab, check3Prefab, check4Prefab;
 
     // 右上のブロックマップ
     byte[][] blocks =
@@ -15,17 +15,17 @@ public class Stage2 : MonoBehaviour
             //            1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17
             new byte [] { 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 1
             new byte [] { 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 2
-            new byte [] { 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 3
-            new byte [] { 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 4
-            new byte [] { 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 }, // 5
-            new byte [] { 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 6
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 7
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 9
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 10
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 11
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 12
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 13
+            new byte [] { 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0 }, // 3
+            new byte [] { 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0 }, // 4
+            new byte [] { 1, 0, 1, 1, 1, 1, 1, 1, 1, 3, 0, 1, 0, 0, 0, 0, 0 }, // 5
+            new byte [] { 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0 }, // 6
+            new byte [] { 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0 }, // 7
+            new byte [] { 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
+            new byte [] { 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 9
+            new byte [] { 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 10
+            new byte [] { 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 11
+            new byte [] { 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 12
+            new byte [] { 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 13
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 14
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 15
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 16
@@ -39,15 +39,15 @@ public class Stage2 : MonoBehaviour
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 2
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 3
             new byte [] { 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 4
-            new byte [] { 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 }, // 5
+            new byte [] { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 5
             new byte [] { 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 6
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 7
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
+            new byte [] { 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 7
+            new byte [] { 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 9
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 10
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 11
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 12
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 13
+            new byte [] { 0, 0, 0, 0, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 11
+            new byte [] { 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 12
+            new byte [] { 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 13
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 14
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 15
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 16
@@ -60,16 +60,16 @@ public class Stage2 : MonoBehaviour
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 1
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 2
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 3
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 4
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 5
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 6
+            new byte [] { 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 4
+            new byte [] { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 5
+            new byte [] { 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 6
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 7
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0 }, // 9
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0 }, // 10
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 11
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 12
-            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 13
+            new byte [] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 9
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 10
+            new byte [] { 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 11
+            new byte [] { 0, 0, 0, 0, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 12
+            new byte [] { 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 13
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 14
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 15
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 16
@@ -83,12 +83,54 @@ public class Stage2 : MonoBehaviour
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 2
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 3
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 4
+            new byte [] { 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 5
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 6
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 7
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 9
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 10
+            new byte [] { 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 11
+            new byte [] { 0, 0, 0, 0, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 12
+            new byte [] { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 13
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 14
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 15
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 16
+        };
+
+    byte[][] blocksD =
+        {
+            //            1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 1
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 2
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 3
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 4
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 5
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 6
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 7
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
-            new byte [] { 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 9
-            new byte [] { 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 10
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 9
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 10
+            new byte [] { 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 11
+            new byte [] { 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 12
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 13
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 14
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 15
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 16
+        };
+
+    byte[][] blocksE =
+        {
+            //            1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 1
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 2
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 3
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 4
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 5
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 6
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 7
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 9
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 10
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 11
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 12
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 13
@@ -96,6 +138,93 @@ public class Stage2 : MonoBehaviour
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 15
             new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 16
         };
+
+    byte[][] blocksF =
+        {
+            //            1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 1
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 2
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 3
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 4
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 5
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 6
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 7
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 9
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 10
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 11
+            new byte [] { 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 12
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 13
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 14
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 15
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 16
+        };
+
+    byte[][] blocksG =
+        {
+            //            1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 1
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 2
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 3
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 4
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 5
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 6
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 7
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 9
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 10
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 11
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0 }, // 12
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 13
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 14
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 15
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 16
+        };
+
+    byte[][] blocksH =
+        {
+            //            1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 1
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 2
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 3
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 4
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 5
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 6
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 7
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 9
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 10
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 11
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0 }, // 12
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 13
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 14
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 15
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 16
+        };
+
+
+    byte[][] blocksI =
+        {
+            //            1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 1
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 2
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 3
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 4
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 5
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 6
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 7
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 8
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 9
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 10
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0 }, // 11
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 1, 0, 0 }, // 12
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0 }, // 13
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 14
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 15
+            new byte [] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 16
+        };
+
+
 
     // 左下のブロックマップ
     byte[][] blocks2 =
@@ -126,6 +255,8 @@ public class Stage2 : MonoBehaviour
     int pos3 = 0;
     int pos4 = 0;
     int pos5 = 0;
+    int pos6 = 0;
+    int pos7 = 0;
 
     int count = 0;
 
@@ -134,21 +265,25 @@ public class Stage2 : MonoBehaviour
     {
         InvokeRepeating("BlockGenerate", 0, 0.5f);
         InvokeRepeating("BlockGenerateA", 1, 0.5f);
-        //InvokeRepeating("BlockGenerateB", 2, 0.5f);
+        InvokeRepeating("BlockGenerateB", 2, 0.5f);
+        InvokeRepeating("BlockGenerateC", 3, 0.5f);
+        InvokeRepeating("BlockGenerateD", 4, 0.5f);
+        InvokeRepeating("BlockGenerateE", 5, 0.5f);
+        StartCoroutine(BlockWait1());
         //InvokeRepeating("BlockGenerate2", 0, 0.5f);
         //InvokeRepeating("BlockGenerate5",0,0.5f);
         //InvokeRepeating("BlockGenerate4", 3, 0.5f);
         //Invoke("BlockGenerate5", 0);
-
-        StartCoroutine(BlockGenerateC());
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
+
+    
 
     // 右上
     void BlockGenerate()
@@ -159,11 +294,7 @@ public class Stage2 : MonoBehaviour
             {
                 for (int j = 0; j < blocks[i].Length; j++)
                 {
-                    if (blocks[i][j] == 1)
-                    {
-                        Instantiate(brockPrefab, new Vector3(j + 1, 10, i), Quaternion.identity);
-                    }
-
+                    BlockSelect(blocks[i][j], i, j);
                 }
 
             }
@@ -180,15 +311,7 @@ public class Stage2 : MonoBehaviour
             {
                 for (int j = 0; j < blocksA[i].Length; j++)
                 {
-                    if (blocksA[i][j] == 1)
-                    {
-                        Instantiate(brockPrefab, new Vector3(j + 1, 10, i), Quaternion.identity);
-                    }
-                    else if (blocksA[i][j] == 4)
-                    {
-                        Instantiate(tagNashi, new Vector3(j + 1, 10, i), Quaternion.identity);
-                    }
-
+                    BlockSelect(blocksA[i][j], i, j);
                 }
 
             }
@@ -205,19 +328,7 @@ public class Stage2 : MonoBehaviour
             {
                 for (int j = 0; j < blocksB[i].Length; j++)
                 {
-                    if (blocksB[i][j] == 1)
-                    {
-                        Instantiate(brockPrefab, new Vector3(j + 1, 10, i), Quaternion.identity);
-                    }
-                    else if (blocksB[i][j] == 2)
-                    {
-                        Instantiate(goalPrefab, new Vector3(j + 1, 10, i), Quaternion.identity);
-                    }
-                    else if (blocksB[i][j] == 3)
-                    {
-                        Instantiate(checkPrefab, new Vector3(j + 1, 10, i), Quaternion.identity);
-                    }
-
+                    BlockSelect(blocksB[i][j], i, j);
                 }
 
             }
@@ -226,31 +337,142 @@ public class Stage2 : MonoBehaviour
     }
 
     // 右上C
-    IEnumerator BlockGenerateC()
+    void BlockGenerateC()
     {
-        yield return new WaitUntil(() => check1Flag);
-
-        for (int i = 0; i < blocksC.Length; i++)
+        if (pos4 < blocksC.Length)
         {
-            for (int j = 0; j < blocksC[i].Length; j++)
+            for (int i = pos4; i < pos4 + 1; i++)
             {
-                if (blocksC[i][j] == 1)
+                for (int j = 0; j < blocksC[i].Length; j++)
                 {
-                    Instantiate(brockPrefab, new Vector3(j + 1, 10, i), Quaternion.identity);
-                }
-                else if (blocksC[i][j] == 2)
-                {
-                    Instantiate(goalPrefab, new Vector3(j + 1, 10, i), Quaternion.identity);
-                }
-                else if (blocksC[i][j] == 3)
-                {
-                    Instantiate(checkPrefab, new Vector3(j + 1, 10, i), Quaternion.identity);
+                    BlockSelect(blocksC[i][j], i, j);
                 }
 
             }
+            pos4++;
+        }
+        
+    }
 
+    // 右上D
+    void BlockGenerateD()
+    {
+        if (pos5 < blocksD.Length)
+        {
+            for (int i = pos5; i < pos5 + 1; i++)
+            {
+                for (int j = 0; j < blocksD[i].Length; j++)
+                {
+                    BlockSelect(blocksD[i][j], i, j);
+                }
+
+            }
+            pos5++;
+        }
+
+    }
+
+    // 右上E
+    void BlockGenerateE()
+    {
+        if (pos6 < blocksE.Length)
+        {
+            for (int i = pos6; i < pos6 + 1; i++)
+            {
+                for (int j = 0; j < blocksE[i].Length; j++)
+                {
+                    BlockSelect(blocksE[i][j], i, j);
+                }
+
+            }
+            pos6++;
+        }
+
+    }
+
+    IEnumerator BlockWait1()
+    {
+        yield return new WaitUntil(() => GameManager.instance.check1Flag && GameManager.instance.check2Flag);
+
+        float waitTime = 0.2f;
+
+        for (int i = 0; i < 4; i++)
+        {
+            BlockGenerateF(12);
+            yield return new WaitForSeconds(waitTime);
+        }
+
+        yield return new WaitForSeconds(waitTime);
+
+        for (int i = 0; i < 3; i++)
+        {
+            BlockGenerateG(12);
+            yield return new WaitForSeconds(waitTime);
+        }
+
+        yield return new WaitForSeconds(waitTime);
+
+        for (int i = 0; i < 2; i++)
+        {
+            BlockGenerateH(12);
+            yield return new WaitForSeconds(waitTime);
+        }
+
+        yield return new WaitForSeconds(waitTime);
+
+        BlockGenerateI(11);
+        BlockGenerateI(12);
+        BlockGenerateI(13);
+
+    }
+
+    void BlockGenerateF(int lineNo)
+    {
+            for (int i = lineNo - 1; i < lineNo; i++)
+            {
+                for (int j = 0; j < blocksF[i].Length; j++)
+                {
+                    BlockSelect(blocksF[i][j], i, j);
+                }
+            }
+    }
+
+    void BlockGenerateG(int lineNo)
+    {
+        for (int i = lineNo - 1; i < lineNo; i++)
+        {
+            for (int j = 0; j < blocksG[i].Length; j++)
+            {
+             
+                BlockSelect(blocksG[i][j], i, j);
+            }
         }
     }
+
+    void BlockGenerateH(int lineNo)
+    {
+        for (int i = lineNo - 1; i < lineNo; i++)
+        {
+            for (int j = 0; j < blocksH[i].Length; j++)
+            {
+
+                BlockSelect(blocksH[i][j], i, j);
+            }
+        }
+    }
+
+    void BlockGenerateI(int lineNo)
+    {
+        for (int i = lineNo - 1; i < lineNo; i++)
+        {
+            for (int j = 0; j < blocksI[i].Length; j++)
+            {
+
+                BlockSelect(blocksI[i][j], i, j);
+            }
+        }
+    }
+
 
     // 左下
     void BlockGenerate2()
@@ -332,184 +554,6 @@ public class Stage2 : MonoBehaviour
 
     }
 
-    IEnumerator BlockCol1()
-    {
-        float waitTime = 0.2f;
-
-        int startPos = 1;
-        int endPos = 2;
-
-        Block1Tmp(0, startPos, endPos);
-
-        yield return new WaitForSeconds(waitTime);
-
-        startPos++;
-        endPos++;
-
-        Block1Tmp(0, startPos, endPos);
-
-        yield return new WaitForSeconds(waitTime);
-
-        startPos++;
-        endPos++;
-
-        Block1Tmp(0, startPos, endPos);
-
-        yield return new WaitForSeconds(waitTime);
-
-        startPos++;
-        endPos++;
-
-        Block1Tmp(0, startPos, endPos);
-
-        yield return new WaitForSeconds(waitTime);
-
-        startPos++;
-        endPos++;
-
-        Block1Tmp(0, startPos, endPos);
-
-        yield return new WaitForSeconds(waitTime);
-
-        startPos++;
-        endPos++;
-
-        Block1Tmp(0, startPos, endPos);
-
-        yield return new WaitForSeconds(waitTime);
-
-        startPos++;
-        endPos++;
-
-        Block1Tmp(0, startPos, endPos);
-
-        yield return new WaitForSeconds(waitTime);
-
-        startPos++;
-        endPos++;
-
-        Block1Tmp(0, startPos, endPos);
-
-        yield return new WaitForSeconds(waitTime);
-
-        startPos++;
-        endPos++;
-
-        Block1Tmp(0, startPos, endPos);
-
-        yield return new WaitForSeconds(waitTime);
-
-        Block1Tmp(0, 7, 8);
-
-        yield return new WaitForSeconds(waitTime);
-
-        startPos++;
-        endPos++;
-
-        for (int i = 0; i < 2; i++)
-        {
-            yield return new WaitForSeconds(waitTime);
-            Block1Tmp(0, startPos, endPos);
-        }
-
-        yield return new WaitForSeconds(1.5f);
-
-        startPos++;
-        endPos++;
-
-        for (int i = 0; i < 3; i++)
-        {
-            yield return new WaitForSeconds(waitTime);
-            Block1Tmp(0, startPos, endPos);
-        }
-
-        yield return new WaitForSeconds(1.5f);
-
-        startPos++;
-        endPos++;
-
-        for (int i = 0; i < 4; i++)
-        {
-            yield return new WaitForSeconds(waitTime);
-            Block1Tmp(0, startPos, endPos);
-        }
-
-        yield return new WaitForSeconds(1.5f);
-
-        startPos++;
-        endPos++;
-
-        for (int i = 0; i < 3; i++)
-        {
-            yield return new WaitForSeconds(waitTime);
-            Block1Tmp(0, startPos, endPos);
-        }
-
-        yield return new WaitForSeconds(1.5f);
-
-        startPos++;
-        endPos++;
-
-        for (int i = 0; i < 2; i++)
-        {
-            yield return new WaitForSeconds(waitTime);
-            Block1Tmp(0, startPos, endPos);
-        }
-
-        yield return new WaitForSeconds(1.5f);
-
-        for (int i = 0; i < 2; i++)
-        {
-            yield return new WaitForSeconds(waitTime);
-            Block1Tmp(1, startPos, endPos);
-        }
-
-        yield return new WaitForSeconds(1.5f);
-
-        startPos--;
-        endPos--;
-
-        Block1Tmp(1, startPos, endPos);
-
-        yield return new WaitForSeconds(waitTime);
-
-        startPos--;
-        endPos--;
-
-        int golsStartPos = startPos;
-        int goalEndPos = endPos;
-
-        for (int i = 0; i < 3; i++)
-        {
-            yield return new WaitForSeconds(waitTime);
-            Block1Tmp(1, startPos, endPos);
-        }
-
-        for (int i = 0; i < 4; i++)
-        {
-            yield return new WaitForSeconds(waitTime);
-            Block1Tmp(2, startPos, endPos);
-        }
-
-        yield return new WaitForSeconds(waitTime);
-
-        /*
-        startPos--;
-        endPos--;
-
-        for (int i = 0; i < 2; i++)
-        {
-            Block1Tmp(1, startPos, endPos);
-        }
-
-        yield return new WaitForSeconds(2.0f);
-
-        GoalTmp(2, golsStartPos, goalEndPos);
-        */
-
-
-    }
-
 
     void Block1Tmp(int lineNo, int startPos, int endPos)
     {
@@ -529,6 +573,42 @@ public class Stage2 : MonoBehaviour
 
             }
             count++;
+        }
+    }
+
+    void BlockSelect(int blockNo, int i, int j)
+    {
+        if (blockNo == 1)
+        {
+            Instantiate(brockPrefab, new Vector3(j + 1, 10, i), Quaternion.identity);
+        }
+        else if (blockNo == 2)
+        {
+            Instantiate(goalPrefab, new Vector3(j + 1, 10, i), Quaternion.identity);
+        }
+        else if (blockNo == 3)
+        {
+            Instantiate(checkPrefab, new Vector3(j + 1, 10, i), Quaternion.identity);
+        }
+        else if (blockNo == 4)
+        {
+            Instantiate(tagNashi, new Vector3(j + 1, 10, i), Quaternion.identity);
+        }
+        else if (blockNo == 5)
+        {
+            Instantiate(longPrefab, new Vector3(j + 1, 10, i), Quaternion.identity);
+        }
+        else if (blockNo == 6)
+        {
+            Instantiate(check2Prefab, new Vector3(j + 1, 10, i), Quaternion.identity);
+        }
+        else if (blockNo == 7)
+        {
+            Instantiate(check3Prefab, new Vector3(j + 1, 10, i), Quaternion.identity);
+        }
+        else if (blockNo == 8)
+        {
+            Instantiate(check4Prefab, new Vector3(j + 1, 10, i), Quaternion.identity);
         }
     }
 
