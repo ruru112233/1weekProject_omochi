@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anime = GetComponent<Animator>();
         startPos = GameObject.Find("StartPos");
     }
 
@@ -54,11 +55,13 @@ public class Player : MonoBehaviour
                 moveFlag = false;
                 rb.useGravity = false;
                 climbFlag1 = true;
+                anime.SetTrigger("Climb");
             }
         }
 
         if (climbFlag1)
         {
+            
             climbTime += Time.deltaTime;
 
             if (climbTime <= 1.0f)
@@ -93,11 +96,23 @@ public class Player : MonoBehaviour
             if (z > 0)
             {
                 transform.position += transform.forward * z;
+                anime.SetBool("Run", true);
+                anime.SetBool("Walk", false);
+            }
+            else if (z < 0)
+            {
+                transform.position += transform.forward * z / 3;
+                anime.SetBool("Run", false);
+                anime.SetBool("Walk", true);
+
             }
             else
             {
-                transform.position += transform.forward * z / 3;
+                anime.SetBool("Run", false);
+                anime.SetBool("Walk", false);
             }
+
+
             //ADキー、←→キーで方向を替える
             float x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * angleSpeed;
             transform.Rotate(Vector3.up * x);

@@ -10,6 +10,8 @@ TagManager:
   - Butterfly
   - Check1
   - AudioManager
+  - RotationCamera
+  - Noboru
   layers:
   - Default
   - TransparentFX
