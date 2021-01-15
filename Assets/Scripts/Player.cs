@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     // キャラの移動
@@ -81,7 +81,8 @@ public class Player : MonoBehaviour
         // ゲームオーバー
         if (transform.position.y <= 0.6f)
         {
-
+            GameManager.instance.gameOver.SetActive(true);
+            StartCoroutine(GameOver());
         }
     }
 
@@ -112,15 +113,19 @@ public class Player : MonoBehaviour
                 anime.SetBool("Walk", false);
             }
 
-
             //ADキー、←→キーで方向を替える
             float x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * angleSpeed;
             transform.Rotate(Vector3.up * x);
 
-            
         }
         
+    }
 
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     
@@ -135,17 +140,10 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Goal")
         {
 
-            Debug.Log("Clear");
+            GameManager.instance.gameClear.SetActive(true);
+
         }
 
-        /*
-        if (other.gameObject.tag == "Check1")
-        {
-            GameManager.instance.stage1.check1Flag = true;
-            GameObject check = GameObject.FindGameObjectWithTag("Butterfly");
-            Destroy(check);
-        }
-        */
     }
 
     private void OnTriggerExit(Collider other)
