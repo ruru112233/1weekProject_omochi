@@ -12,6 +12,7 @@ TagManager:
   - AudioManager
   - RotationCamera
   - Noboru
+  - Ground
   layers:
   - Default
   - TransparentFX

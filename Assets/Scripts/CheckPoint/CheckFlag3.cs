@@ -23,6 +23,7 @@ public class CheckFlag3 : MonoBehaviour
             GameManager.instance.check3Flag = true;
             if (transform.childCount != 0)
             {
+                AudioManager.instance.PlaySE(0);
                 GameObject check = transform.GetChild(0).gameObject;
                 Destroy(check);
             }
