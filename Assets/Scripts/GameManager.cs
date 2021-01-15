@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject noboruText;
 
     public GameObject ganerateManager;
+
+    public GameObject gameClear, gameOver;
 
     public GameObject menu;
 
@@ -21,6 +24,8 @@ public class GameManager : MonoBehaviour
     public bool check3Flag = false;
     public bool check4Flag = false;
     public bool check5Flag = false;
+
+    public bool commentEnd = false;
 
     public static GameManager instance;
 
@@ -46,6 +51,10 @@ public class GameManager : MonoBehaviour
         {
             menu.SetActive(true);
         }
+
+        if (gameClear != null) gameClear.SetActive(false);
+        if (gameOver != null) gameOver.SetActive(false);
+
         noboruText.SetActive(false);
         check1Flag = false;
         check2Flag = false;
@@ -65,5 +74,12 @@ public class GameManager : MonoBehaviour
         {
             noboruText.SetActive(false);
         }
+
+        // リトライ
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
     }
 }

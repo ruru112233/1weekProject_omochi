@@ -173,6 +173,8 @@ public class GenerateManager : MonoBehaviour
         int startPos = 1;
         int endPos = 2;
 
+        yield return new WaitUntil(() => GameManager.instance.commentEnd);
+
         Block1Tmp(0,startPos, endPos);
 
         yield return new WaitForSeconds(waitTime);

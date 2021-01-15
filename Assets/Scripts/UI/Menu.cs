@@ -11,8 +11,6 @@ public class Menu : MonoBehaviour
 
     public GameObject titleText, commentText;
 
-    bool commentEnd = false;
-
     Text tt; // メニュータイトルのテキスト
     Text ct; // メニューコメントのテキスト
 
@@ -54,16 +52,32 @@ public class Menu : MonoBehaviour
         {
             if (commentCount == 0)
             {
-                if (SystemInfo.operatingSystem.Contains("Windows"))
+                    tt.text = "ゲーム説明";
+                    ct.text = "このゲームは、「おもちくん」を操作してゴールを目指すゲームです。" + kaigyouWin +
+                              kaigyouWin +
+                              "Enter" + kaigyouWin
+                              ;
+
+                if (SystemInfo.operatingSystem.Contains("Mac"))
                 {
+                    tt.text = "ゲーム説明";
+                    ct.text = "このゲームは、「おもちくん」を操作してゴールを目指すゲームです。" + kaigyouMac +
+                        　　　kaigyouMac +
+                              "Enter" + kaigyouMac;
+                }
+            }
+
+            if (commentCount == 1)
+            {
                     tt.text = "移動";
                     ct.text = "移動方法の説明です。" + kaigyouWin +
                               "↑ 前進" + kaigyouWin +
                               "↓ 後退" + kaigyouWin +
                               "→ 右側へ向く" + kaigyouWin +
-                              "← 左側へ向く" + kaigyouWin;
+                              "← 左側へ向く" + kaigyouWin +
+                              kaigyouWin +
+                              "Enter";
 
-                }
 
                 if (SystemInfo.operatingSystem.Contains("Mac"))
                 {
@@ -72,35 +86,76 @@ public class Menu : MonoBehaviour
                               "↑ 前進" + kaigyouMac +
                               "↓ 後退" + kaigyouMac +
                               "→ 右側へ向く" + kaigyouMac +
-                              "← 左側へ向く" + kaigyouMac;
-                    ;
-                }
-            }
-
-            if (commentCount == 1)
-            {
-                if (SystemInfo.operatingSystem.Contains("Windows"))
-                {
-                    tt.text = "視点切り替え";
-                    ct.text = "視点の切り替えについて説明します。" + kaigyouWin +
-                        "Qキー 右回転" + kaigyouWin +
-                              "Eキー 左回転" + kaigyouWin +
-                              "Rキー 元に戻す" + kaigyouWin;
-                }
-
-                if (SystemInfo.operatingSystem.Contains("Mac"))
-                {
-                    tt.text = "視点切り替え";
-                    ct.text = "視点の切り替えについて説明します。" + kaigyouMac +
-                              "Qキー 右回転" + kaigyouMac +
-                              "Eキー 左回転" + kaigyouMac +
-                              "Rキー 元に戻す" + kaigyouMac;
+                              "← 左側へ向く" + kaigyouMac +
+                              kaigyouMac +
+                              "Enter";
                 }
             }
 
             if (commentCount == 2)
             {
-                commentEnd = true;
+                    tt.text = "視点切り替え";
+                    ct.text = "視点の切り替えについて説明します。" + kaigyouWin +
+                              "Qキー 左側に回転" + kaigyouWin +
+                              "Eキー 右側に回転" + kaigyouWin +
+                              "Rキー 元に戻す" + kaigyouWin +
+                              kaigyouWin +
+                              "Enter";
+
+                if (SystemInfo.operatingSystem.Contains("Mac"))
+                {
+                    tt.text = "視点切り替え";
+                    ct.text = "視点の切り替えについて説明します。" + kaigyouMac +
+                              "Qキー 左側に回転" + kaigyouMac +
+                              "Eキー 右側に回転" + kaigyouMac +
+                              "Rキー 元に戻す" + kaigyouMac +
+                              kaigyouMac +
+                              "Enter";
+                }
+            }
+
+            if (commentCount == 3)
+            {
+                tt.text = "おもちくんを呼ぶ";
+                ct.text = "このゲームは、おもちくんを呼ぶことができます。" + kaigyouWin +
+                          "おもちくんを呼ぶと、呼ばれたおもちくんを操作することになり、今まで操作していたおもちくんは、その場で待機します。" + kaigyouWin +
+                          "Iキー　おもちくんを呼ぶ" + kaigyouWin +
+                          kaigyouWin +
+                          "Enter";
+
+                if (SystemInfo.operatingSystem.Contains("Mac"))
+                {
+                    tt.text = "おもちくんを呼ぶ";
+                    ct.text = "このゲームは、おもちくんを呼ぶことができます。" + kaigyouMac +
+                              "おもちくんを呼ぶと、呼ばれたおもちくんを操作することになり、今まで操作していたおもちくんは、その場で待機します。" + kaigyouMac +
+                              "Iキー　おもちくんを呼ぶ" + kaigyouMac +
+                              kaigyouMac +
+                              "Enter";
+                }
+            }
+
+            if (commentCount == 4)
+            {
+                
+                tt.text = "おわり";
+                ct.text = "これで、ゲームの説明は終わりです。" + kaigyouWin +
+                          "楽しんでいただければ、幸いです！" + kaigyouWin +
+                          kaigyouWin +
+                          "Enter";
+
+                if (SystemInfo.operatingSystem.Contains("Mac"))
+                {
+                    tt.text = "おわり";
+                    ct.text = "これで、ゲームの説明は終わりです。" + kaigyouMac +
+                              "楽しんでいただければ、幸いです！" + kaigyouMac +
+                              kaigyouMac +
+                              "Enter";
+                }
+            }
+
+            if (commentCount == 5)
+            {
+                GameManager.instance.commentEnd = true;
             }
         }
 
@@ -116,7 +171,7 @@ public class Menu : MonoBehaviour
 　　　　tt = titleText.GetComponent<Text>();
         ct = commentText.GetComponent<Text>();
 
-        yield return new WaitUntil(() => commentEnd);
+        yield return new WaitUntil(() => GameManager.instance.commentEnd);
 
         sizeY = 100;
 
