@@ -2342,7 +2342,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30B2\u30FC\u30E0\u30AF\u30EA\u30A2"
+  m_Text: "\u30B9\u30C6\u30FC\u30B8\u30AF\u30EA\u30A2"
 --- !u!222 &1647217891
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2845,7 +2845,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b6349d08a5335cd4aa534282435d11cc, type: 3}
+    m_Font: {fileID: 12800000, guid: 2745b31a1ca657b4e91e98b1480ca536, type: 3}
     m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 0
