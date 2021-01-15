@@ -61,6 +61,9 @@ public class GameManager : MonoBehaviour
         check3Flag = false;
         check4Flag = false;
         check5Flag = false;
+
+        AudioManager.instance.PlayBGM(0);
+
 }
 
     // Update is called once per frame
@@ -82,4 +85,5 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
 }
